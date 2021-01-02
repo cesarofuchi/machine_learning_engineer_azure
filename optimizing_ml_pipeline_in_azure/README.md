@@ -15,13 +15,16 @@ The best performing model found using AutoML was a Voting Ensemble with 91.6% ac
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
+***Evaluate the logistic regression baseline.***
+
 * The data is accessed from url - "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv", and a Tabular Dataset is created using TabularDatasetFactory 
 
 * Data is then cleaned and pre-processed using clean_data function, this includes Binary encoding and One Hot Encoding of categorical features
 
 * Data is then split into 80:20 ratio for training and testing
 
-* Define a Scikit-learn based Logistic Regression model and set up a parameter sampler. We define 2 hyperparameters to be tuned, namely C and max_iter. C represents the inverse regularization parameter and max_iter represents the maximum number of iterations
+* Define a Scikit-learn based Logistic Regression model and set up a parameter sampler. We define 2 hyperparameters to be tuned, namely C and max_iter. C represents the inverse regularization parameter and max_iter represents the maximum number of iterations. Default parameters (1 for C) and (100) for max iterations gave us 0.9116 of accuracy
+
 
 * HyperDrive configuration is created using a SKLearn estimator and parameter sampler
 
