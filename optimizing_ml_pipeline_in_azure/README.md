@@ -19,11 +19,18 @@
 This project is part of the Udacity Azure ML Nanodegree.
 In this project, we build an Azure ML pipeline using the Python SDK and a provided Scikit-learn Logistic Regression model. We use **Hyperdrive** to optimize the hyperparameters and also generate another model with Azure **AutoML** tool for comparison. 
 
+The `Machine Learning Pipeline Architecture` is presented in the following image:
+
+![image](Project1.jpg)
+
+All the steps are explained in the next sections.
+
 ## Summary
 ---
 The project uses this [dataset](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) <sup>[1](#id-notes)</sup> which contains data from direct marketing campaigns of a portuguese banking institution. The marketing campaigns were based on phone calls to convince potential clients to subscribe to bank's term deposit. The dataset have 20 variables from the clients that the classifier can use to predict whether the potential client would accept and make a term deposit at the bank or not (y= 1 or 0). 
 
 The best performing model found using AutoML was a Voting Ensemble with 91.8% accuracy, while the accuracy of the Logistic classifier implemented using hyperdrive was 91.3%
+
 
 <div id='id-scikit'/>
 
