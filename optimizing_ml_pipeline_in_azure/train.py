@@ -10,14 +10,12 @@ import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 
-# TODO: Create TabularDataset using TabularDatasetFactory
-# Data is located at:
-#"https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
+#Load data into Azure TabularDataset
 ds = TabularDatasetFactory.from_delimited_files(path="https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv")
 
 
-#should be defined before use
+# function for pre-processing and data cleaning
 def clean_data(data):
     # Dict for cleaning data
     months = {"jan":1, "feb":2, "mar":3, "apr":4, "may":5, "jun":6, "jul":7, "aug":8, "sep":9, "oct":10, "nov":11, "dec":12}
@@ -48,11 +46,9 @@ def clean_data(data):
 
 x, y = clean_data(ds)
 
-# TODO: Split data into train and test sets.
-
-
-### YOUR CODE HERE ###a
+# Split data into train and test sets.
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.80,test_size=0.20, random_state=1)
+
 
 run = Run.get_context()
 
@@ -74,7 +70,7 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     
-    #add code as suggested
+    #save model for each iteration
     os.makedirs('outputs', exist_ok=True)
     joblib.dump(model, 'outputs/model.joblib')
 
