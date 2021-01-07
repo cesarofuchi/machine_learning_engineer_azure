@@ -21,7 +21,7 @@ In this project, we build an Azure ML pipeline using the Python SDK and a provid
 
 The `Machine Learning Pipeline Architecture` is presented in the following image:
 
-![image](Project1.jpg)
+![image](Architecture.svg)
 
 All the steps are explained in the next sections.
 
