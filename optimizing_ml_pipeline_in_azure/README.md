@@ -85,7 +85,14 @@ The parameters we used to configurate the HyperDrive (HyperDriveConfig) have the
 
 4. Get the best Model based on the accuracy and save as a joblib.
 
-The best model accuracy obtained was **91.30%** using the parameters **--C=5** and **-max_iter=250**
+The best model accuracy obtained was **91.35%** using the parameters **--C=5** and **-max_iter=250**
+
+The results can be analyzed in Azure widget inside the notebook or in the cloud. Some screenshots are presented:
+
+![image](Hyperdrive0.png)
+![image](Hyperdrive1.png)
+
+
 
 <div id='id-automl'/>
 
@@ -127,7 +134,7 @@ The accuracy comparison is presented in the following table:
 
 | Scikit-learn LR | Scikit-learn LR tuned with Hyperdrive | AutoML |
 | -----| :------:| ---:|
-| 91.15%| 91.30%| 91.82%|
+| 91.15%| 91.35%| 91.82%|
 
 We observe a small improvement using the Hyperdrive to tune the hyperparameters in comparison to the baseline. The autoML presented the best accuracy using a more complex model but only by a slighly margin. 
 
