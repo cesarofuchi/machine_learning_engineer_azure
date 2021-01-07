@@ -106,11 +106,11 @@ The AutoML required fewer steps as it does not need to configure specific parame
 * select the number of k-folds cross validation - 5
 
 
-A variety of models were tested, and in our case the `Voting Ensemble` was the best model with an accuracy of **91.79%**.
+A variety of models were tested, and in our case the `Voting Ensemble` was the best model with an accuracy of **91.82%**.
 
 ***Voting Ensemble***
 
-The idea behind the VotingClassifier is to combine conceptually different machine learning classifiers and use a majority vote or the average predicted probabilities (soft vote) to predict the class labels. Such a classifier can be useful for a set of equally well performing model in order to balance out their individual weaknesses. [Documentation from scikit-learn](https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier)
+The idea behind the VotingClassifier is to combine conceptually different machine learning classifiers and use a majority vote or the average predicted probabilities (soft vote) to predict the class labels. Such a classifier can be useful for a set of equally well performing model in order to balance out their individual weaknesses. [Documentation from scikit-learn](https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier). 
 
 ***Data GuardRail Alert***
 
@@ -127,7 +127,7 @@ The accuracy comparison is presented in the following table:
 
 | Scikit-learn LR | Scikit-learn LR tuned with Hyperdrive | AutoML |
 | -----| :------:| ---:|
-| 91.15%| 91.30%| 91.79%|
+| 91.15%| 91.30%| 91.82%|
 
 We observe a small improvement using the Hyperdrive to tune the hyperparameters in comparison to the baseline. The autoML presented the best accuracy using a more complex model but only by a slighly margin. 
 
@@ -155,7 +155,10 @@ With more time and budget, we could also use the `Grid sampling`or the `Bayesian
 
 ***AutoMLConfig***
 
-Besides the possibilities of enhancing the computational resources for the tests, the AutoML provided a class imbalance sign. That could be worked in future work to get a better data for training.
+Besides the possibilities of enhancing the computational resources for the tests, the AutoML provided a class imbalance sign. `Imbalanced data can lead to a falsely perceived effect of a model's accuracy because the input data has bias towards one class`. The smallest class was detected to be 11% of the total data. In this situation we need to analyze the type of data imbalance and use apropriate methods to handle it. The simplest and most commonly used techniques are the sampling methods called oversampling/undersampling. Other techniques are cost-sensitive learning methods based on changing the weighting og individual samples (upweighting and Down-weighting). As accuracy might not be a proper metric, we should different ones, i.e.AUX, ROC, F1-Score and others. This [article<sup>3</sup>](#id-notes) shows a survey of metrics for imbalanced classification. 
+
+More information on Azure AutoML results is provided [here](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml). A guide to classification on Imbalanced Datasets focused on binary classification [[2]](#id-notes) is provided in the notes section for detailed information. 
+
 
 <div id='id-clusterclean'/>
 
@@ -186,4 +189,9 @@ Some usefull highlights:
 <sup>1</sup> The [original dataset](https://archive.ics.uci.edu/ml/datasets/bank+marketing) is available in the UCI Machine Learning Repository, from the paper of Moro et al., 2014. 
 
 S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
+
+<sup>2</sup> Matthew S. *Guide to Classification on Imbalanced Datasets* . Towards Data Science, Jul 2020 https://towardsdatascience.com/guide-to-classification-on-imbalanced-datasets-d6653aa5fa23
+
+
+<sup>3</sup> Jason Brownlee. *Tour of Evaluation Metrics for Imbalanced Classification* . Machine Learning Mastery, Jan 2020 https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/
 
