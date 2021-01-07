@@ -89,8 +89,8 @@ The best model accuracy obtained was **91.35%** using the parameters **--C=5** a
 
 The results can be analyzed in Azure widget inside the notebook or in the cloud. Some screenshots are presented:
 
-![image](Hyperdrive0.png)
-![image](Hyperdrive1.png)
+![image1](Hyperdrive0.png)
+![image2](HyperDrive1.png)
 
 
 
