@@ -119,9 +119,16 @@ A variety of models were tested, and in our case the `Voting Ensemble` was the b
 
 The idea behind the VotingClassifier is to combine conceptually different machine learning classifiers and use a majority vote or the average predicted probabilities (soft vote) to predict the class labels. Such a classifier can be useful for a set of equally well performing model in order to balance out their individual weaknesses. [Documentation from scikit-learn](https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier). 
 
+The list of models used in the Voting Ensemble are presented in the project notebook.
+
+Azure ML also provides model explanation. In the screenshot the feature importance is depicted, presenting the 4 most important features.
+![image3](VotingEnsemble0.png)
+
+
+
 ***Data GuardRail Alert***
 
-Data guardrails helps to identify potential issues with your data (for example, missing values or class imbalance). In our case a class imbalance was detected, which can be further investigated.
+Data guardrails helps to identify potential issues with your data (for example, missing values or class imbalance). In our case a class imbalance was detected. In the [Future Work](#id-future) section some measures are discussed.
 
 <div id='id-pipeline'/>
 
