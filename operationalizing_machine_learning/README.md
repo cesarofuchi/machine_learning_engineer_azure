@@ -35,17 +35,17 @@ The first step of an automated ML experiment is to register the bank marketing d
 
 The autoML used is set to a classification problem, with the objective to predict the `Y` binary variable, as a Yes or No subscription of the bank term. The autoML process is extensively described in the previous project (Optimizing ML Pipeline in Azure). The completed run is depicted as:
 
-![image](figures/2_autoML.jpg)
+![image](figures/2_autoML.png)
 
 The best model using the accuracy of 0.9192 as the main metric is the Voting Ensemble:
 
-![image](figures/3_bestModel.jpg)
+![image](figures/3_bestModel.png)
 
 ## Deploy best model
 
 The best model was deployed in [Azure Container Instance (ACI)](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart), with required authentication.
 
-![image](figures/4_bestModelDeploy.jpg)
+![image](figures/4_bestModelDeploy.png)
 
 ## Enable Logging
 Logging is essential to evaluate possible errors. In Azure ML we need to enable the `Application Insigths` using the cloud interface or using the python code in `logs.py`. 
@@ -59,26 +59,26 @@ service.update(enable_app_insights=True)
 The following figure shows the Application Insights flag enabled and some logs captured.
 
 *Model deployment*
-![image](figures/5x_EnableApplicationInsigths.jpg)
+![image](figures/5x_EnableApplicationInsigths.png)
 
 *Detailed log from log.py.*
-![image](figures/6_EnableInsigthsLog.jpg)
+![image](figures/6_EnableInsigthsLog.png)
 
 ## Consume  model endpoint
 
 To consume the deployed model, Azure generates a RESTful API endpoint. To access the endpoint, there is an URI address and an authentication method that can be a Token or a Key.  The endpoint.py file creates a HTTP connection To interact with the model endpoint. This is done in in the script endpoint.py, where we enter the URI, KEY and make an HTTP POST. 
 
 *Consume endpoint information, URI and Key.*
-![image](figures/7_EndpointURI_KEY.jpg)
+![image](figures/7_EndpointURI_KEY.png)
 
 ## Benchmark 
 I also test the performance of the model enpoint using [Apache Benchmark (AB) tool](https://httpd.apache.org/docs/2.4/programs/ab.html). The tool is especially useful to show how many requests per second the endpoint is capable of serving. In the `benchmark.sh` file, 10-20 HTTP requests are performed, and its performance are measured.
 
 *script execution*
-![image](figures/8_ApacheBenchmark.jpg)
+![image](figures/8_ApacheBenchmark.png)
 
 *performance results*
-![image](figures/9_ApacheBenchmark2.jpg)
+![image](figures/9_ApacheBenchmark2.png)
 
 ## Swagger documentation
 
@@ -87,46 +87,46 @@ To consume the model, besides knowing the REST endpoint URI, it is important to 
 We will run swagger locally (LocalHost) by using a [docker](https://www.docker.com/) file with a swagger-ui environment [(documentation)](https://hub.docker.com/r/swaggerapi/swagger-ui), as show in screen bellow.
 
 *swagger deployed with docker*
-![image](figures/Swagger_docker.jpg)
+![image](figures/Swagger_docker.png)
 
 I use the `serve.py` script to create an HTTP server to expose the current working directory. It is meant to be an easy way to expose a local `swagger.json` file so thata swagger-ui service can pick it up from localhost.
 
 The next screens show the available methods and details as ServiceInput, ServiceOutput and ErrorResponse.
 
 *methods avaialable and detailse extracted from Azure generated json*
-![image](figures/Swagger_azure_model.jpg)
-![image](figures/Swagger_azure_model2.jpg)
+![image](figures/Swagger_azure_model.png)
+![image](figures/Swagger_azure_model2.png)
 
 ## Create and publish a pipeline
 
 After the model is deployed we can create the Pipeline of the entire process and share it with other team members. We use the notebook `aml-pipelines-with-automated-machine-learning-step.ipynb` to create the Pipeline.
 
 *Pipeline creation*
-![image](figures/PipelineRest1.jpg)
+![image](figures/PipelineRest1.png)
 
  The next step is to publish as a endpoint.
 
 *Pipeline Active endpoint*
-![image](figures/PipelineEndpoint.jpg)
+![image](figures/PipelineEndpoint.png)
 
 
 The pipeline details is presented in the diagram, where the Bankmarketing dataset is followed by an AutoML module.
 
 *Pipeline details*
 
-![image](figures/PipelineBankMarketingAutoML.jpg)
+![image](figures/PipelineBankMarketingAutoML.png)
 
 *Pipeline Run details*
-![image](figures/PipelineRest4.jpg)
+![image](figures/PipelineRest4.png)
 
 
 We can schedule the Pipeline using the Jupyter Notebook and Python:
 
-![image](figures/PipelineTrigger.jpg)
+![image](figures/PipelineTrigger.png)
 
 *Scheduled Pipeline*
 
-![image](figures/PipelineRunning.jpg)
+![image](figures/PipelineRunning.png)
 
 
 <div id='id-screen'/>
