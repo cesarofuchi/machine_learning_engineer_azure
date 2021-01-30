@@ -1,6 +1,3 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
-
-
 # Operationalizing Machine Learning
 
 In this project, I work with the [Bank Marketing dataset](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) to predict if the client will subscribe to bank term deposit [yes or no]. I use Azure to obtain a classification model using AutoML and configure a cloud based machine learning production model. The model is deployed and consumed. Logging and performance with [Apache Bench](https://httpd.apache.org/docs/2.4/programs/ab.html) are presented. The RESTful API documentation is generated with [Swagger](https://swagger.io/). Finally, a pipeline of the process is created, published and consumed. I show how to automate the pipeline process with a HTTP trigger. 
@@ -16,9 +13,11 @@ In this project, I work with the [Bank Marketing dataset](https://automlsampleno
 
 # Architectural Diagram
 
-Provide an architectual diagram of the project and give an introduction of each step. An architectural diagram is an image that helps visualize the flow of operations from start to finish. In this case, it has to be related to the completed project, with its various stages that are critical to the overall flow. For example, one stage for managing models could be "using Automated ML to determine the best model". 
+The Architetural Diagram of the project is presented in the next Figure. 
 
 ![image](figures/P2_Architecture.svg)
+
+In the key steps section we present with details each step of the Architectural Diagram.
 
 <div id='id-key'/>
 
@@ -32,7 +31,7 @@ A user named "Service Principal", has controlled permissions to access specific 
 
 The first step of an automated ML experiment is to register the bank marketing dataset:
 
-![image](figures/1_reg_dataset.jpg)
+![image](figures/1_reg_dataset.png)
 
 The autoML used is set to a classification problem, with the objective to predict the `Y` binary variable, as a Yes or No subscription of the bank term. The autoML process is extensively described in the previous project (Optimizing ML Pipeline in Azure). The completed run is depicted as:
 
