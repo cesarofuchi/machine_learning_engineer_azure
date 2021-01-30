@@ -31,19 +31,27 @@ A user named "Service Principal", has controlled permissions to access specific 
 
 The first step of an automated ML experiment is to register the bank marketing dataset:
 
+*Registered Bankmarketing Dataset *
+
 ![image](figures/1_reg_dataset.png)
 
 The autoML used is set to a classification problem, with the objective to predict the `Y` binary variable, as a Yes or No subscription of the bank term. The autoML process is extensively described in the previous project (Optimizing ML Pipeline in Azure). The completed run is depicted as:
 
+*AutoML Best Model Information*
+
 ![image](figures/2_autoML.png)
 
 The best model using the accuracy of 0.9192 as the main metric is the Voting Ensemble:
+
+*Models evaluated using AutoML*
 
 ![image](figures/3_bestModel.png)
 
 ## Deploy best model
 
 The best model was deployed in [Azure Container Instance (ACI)](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart), with required authentication.
+
+*Model Deployment*
 
 ![image](figures/4_bestModelDeploy.png)
 
@@ -59,9 +67,11 @@ service.update(enable_app_insights=True)
 The following figure shows the Application Insights flag enabled and some logs captured.
 
 *Model deployment*
+
 ![image](figures/5x_EnableApplicationInsigths.png)
 
 *Detailed log from log.py.*
+
 ![image](figures/6_EnableInsigthsLog.png)
 
 ## Consume  model endpoint
@@ -69,9 +79,12 @@ The following figure shows the Application Insights flag enabled and some logs c
 To consume the deployed model, Azure generates a RESTful API endpoint. To access the endpoint, there is an URI address and an authentication method that can be a Token or a Key.  The endpoint.py file creates a HTTP connection To interact with the model endpoint. This is done in in the script endpoint.py, where we enter the URI, KEY and make an HTTP POST. 
 
 *Consume endpoint information, URI and Key.*
+
 ![image](figures/7_EndpointURI_KEY.png)
 
 The followinf figure shows the scoring_uri and the key inside the `endpoint.py` script. We use this information and a hypothetical new data to evaluate if the bank term will be signed. In the following figure, the endpoint.py script is executed in the PowerShell. The response for two sets of data are "NO" and "NO".
+
+*endpoint.py script execution*
 
 ![image](figures/EndpointRes.png)
 
@@ -80,9 +93,11 @@ The followinf figure shows the scoring_uri and the key inside the `endpoint.py` 
 I also test the performance of the model enpoint using [Apache Benchmark (AB) tool](https://httpd.apache.org/docs/2.4/programs/ab.html). The tool is especially useful to show how many requests per second the endpoint is capable of serving. In the `benchmark.sh` file, 10-20 HTTP requests are performed, and its performance are measured.
 
 *script execution*
+
 ![image](figures/8_ApacheBenchmark.png)
 
 *performance results*
+
 ![image](figures/9_ApacheBenchmark2.png)
 
 ## Swagger documentation
