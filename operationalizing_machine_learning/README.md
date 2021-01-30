@@ -117,7 +117,7 @@ After the model is deployed we can create the Pipeline of the entire process and
 The pipeline details is presented in the diagram, where the Bankmarketing dataset is followed by an AutoML module.
 
 *Published Pipeline Overview*
-![image](figures/PipelineRestEndpoint.png)
+![image](figures/PipelineRestEndpoint.PNG)
 
 *Pipeline Run details*
 ![image](figures/PipelineRest4.png)
