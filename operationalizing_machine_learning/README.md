@@ -71,6 +71,11 @@ To consume the deployed model, Azure generates a RESTful API endpoint. To access
 *Consume endpoint information, URI and Key.*
 ![image](figures/7_EndpointURI_KEY.png)
 
+The followinf figure shows the scoring_uri and the key inside the `endpoint.py` script. We use this information and a hypothetical new data to evaluate if the bank term will be signed. In the following figure, the endpoint.py script is executed in the PowerShell. The response for two sets of data are "NO" and "NO".
+
+![image](figures/EndpointRes.png)
+
+
 ## Benchmark 
 I also test the performance of the model enpoint using [Apache Benchmark (AB) tool](https://httpd.apache.org/docs/2.4/programs/ab.html). The tool is especially useful to show how many requests per second the endpoint is capable of serving. In the `benchmark.sh` file, 10-20 HTTP requests are performed, and its performance are measured.
 
@@ -109,12 +114,10 @@ After the model is deployed we can create the Pipeline of the entire process and
 *Pipeline Active endpoint*
 ![image](figures/PipelineEndpoint.png)
 
-
 The pipeline details is presented in the diagram, where the Bankmarketing dataset is followed by an AutoML module.
 
-*Pipeline details*
-
-![image](figures/PipelineBankMarketingAutoML.png)
+*Published Pipeline Overview*
+![image](figures/PipelineRestEndpoint.png)
 
 *Pipeline Run details*
 ![image](figures/PipelineRest4.png)
